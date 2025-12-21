@@ -12,10 +12,16 @@ phases:
       - echo "[INSTALL] Shell version:"
       - bash --version
 
-  pre_build:
-    commands:
+    pre_build:
+      commands:
       - echo "[PRE_BUILD] Running tests..."
+      - echo "[DEBUG] Current directory: $(pwd)"
+      - echo "[DEBUG] Listing files:"
+      - ls -R .
       - cd $CODEBUILD_SRC_DIR
+      - echo "[DEBUG] After cd to CODEBUILD_SRC_DIR:"
+      - pwd
+      - ls -R .
       - chmod +x tests/app.test.sh
       - ./tests/app.test.sh
 
