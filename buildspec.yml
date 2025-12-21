@@ -15,6 +15,7 @@ phases:
   pre_build:
     commands:
       - echo "[PRE_BUILD] Running tests..."
+      - cd $CODEBUILD_SRC_DIR
       - chmod +x tests/app.test.sh
       - ./tests/app.test.sh
 
