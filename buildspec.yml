@@ -15,11 +15,6 @@ phases:
   pre_build:
     commands:
       - echo "[PRE_BUILD] Running tests..."
-      - echo "[DEBUG] Current directory: $(pwd)"
-      - echo "[DEBUG] Listing files:"
-      - ls -R .
-      - cd $CODEBUILD_SRC_DIR
-      - echo "[DEBUG] After cd to CODEBUILD_SRC_DIR:"
       - pwd
       - ls -R .
       - chmod +x tests/app.test.sh
@@ -28,7 +23,7 @@ phases:
   build:
     commands:
       - echo "[BUILD] Generating build version..."
-      - export BUILD_VERSION=$(date -u +"%Y%m%d-%H%M%S-UTC")
+      - export BUILD_VERSION=$(date -u "+%Y%m%d-%H%M%S-UTC")
       - echo "[BUILD] BUILD_VERSION=${BUILD_VERSION}"
 
   post_build:
@@ -38,6 +33,7 @@ phases:
       - cp -r app/* dist/
       - echo "[POST_BUILD] Injecting build version into HTML..."
       - python3 scripts/inject_version.py
+      - echo "[POST_BUILD] Build completed."
 
 artifacts:
   files:
