@@ -12,8 +12,8 @@ phases:
       - echo "[INSTALL] Shell version:"
       - bash --version
 
-    pre_build:
-      commands:
+  pre_build:
+    commands:
       - echo "[PRE_BUILD] Running tests..."
       - echo "[DEBUG] Current directory: $(pwd)"
       - echo "[DEBUG] Listing files:"
@@ -30,13 +30,14 @@ phases:
       - echo "[BUILD] Generating build version..."
       - export BUILD_VERSION=$(date -u +"%Y%m%d-%H%M%S-UTC")
       - echo "[BUILD] BUILD_VERSION=${BUILD_VERSION}"
-      - python3 scripts/inject_version.py
 
   post_build:
     commands:
-      - echo "[POST_BUILD] Build completed. Preparing artifacts directory..."
+      - echo "[POST_BUILD] Preparing artifacts directory..."
       - mkdir -p dist
       - cp -r app/* dist/
+      - echo "[POST_BUILD] Injecting build version into HTML..."
+      - python3 scripts/inject_version.py
 
 artifacts:
   files:
