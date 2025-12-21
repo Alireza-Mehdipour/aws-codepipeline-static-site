@@ -1,0 +1,37 @@
+version: 0.2
+
+env:
+  variables:
+    BUILD_VERSION: "local-dev"
+
+phases:
+  install:
+    commands:
+      - echo "[INSTALL] Python version:"
+      - python3 --version
+      - echo "[INSTALL] Shell version:"
+      - bash --version
+
+  pre_build:
+    commands:
+      - echo "[PRE_BUILD] Running tests..."
+      - chmod +x tests/app.test.sh
+      - ./tests/app.test.sh
+
+  build:
+    commands:
+      - echo "[BUILD] Generating build version..."
+      - export BUILD_VERSION=$(date -u +"%Y%m%d-%H%M%S-UTC")
+      - echo "[BUILD] BUILD_VERSION=${BUILD_VERSION}"
+      - python3 scripts/inject_version.py
+
+  post_build:
+    commands:
+      - echo "[POST_BUILD] Build completed. Preparing artifacts directory..."
+      - mkdir -p dist
+      - cp -r app/* dist/
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
