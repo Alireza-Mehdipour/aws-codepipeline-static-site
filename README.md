@@ -1,4 +1,4 @@
-#  AWS CodePipeline Static Website Deployment
+# AWS CodePipeline Static Website Deployment
 
 This project demonstrates a fully automated CI/CD pipeline for deploying a static website to Amazon S3 using **AWS CodePipeline**, **AWS CodeBuild**, and **GitHub**.  
 It includes automated testing, build version injection, artifact packaging, and S3 static website hosting.
@@ -10,7 +10,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 **Pipeline Flow:**  
 **GitHub → CodePipeline → CodeBuild → S3 (Static Website Hosting)**
 
-###  Components
+### ✅ Components
 
 - **GitHub** – Stores the source code  
 - **AWS CodePipeline** – Orchestrates the CI/CD workflow  
@@ -37,7 +37,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-##  Features
+## ✨ Features
 
 - Fully automated CI/CD pipeline using AWS CodePipeline  
 - Build version injection using Python  
@@ -47,7 +47,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-##  Testing
+## 🧪 Testing
 
 The script at `tests/app.test.sh` validates:
 
@@ -81,7 +81,7 @@ The build pipeline includes:
 
 ---
 
-##  Deployment
+## 🚀 Deployment
 
 The final build artifacts are deployed to an **S3 bucket configured for static website hosting**.
 
@@ -91,13 +91,47 @@ The final build artifacts are deployed to an **S3 bucket configured for static w
 
 The static website is deployed to Amazon S3 and available at:
 
-**https://your-bucket-name.s3-website-<region>.amazonaws.com**
-
-(Replace with your actual S3 website endpoint.)
+http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ---
 
-##  Summary
+## 🧰 Technologies Used
+
+- **AWS CodePipeline** – CI/CD orchestration  
+- **AWS CodeBuild** – Build and test execution  
+- **Amazon S3** – Static website hosting  
+- **GitHub** – Source control and collaboration  
+- **Bash** – Test and validation scripts  
+- **Python** – Build version injection  
+
+---
+
+## 📦 How to Deploy Your Own Version
+
+1. **Fork this repository** to your own GitHub account.  
+2. **Create an S3 bucket** and enable static website hosting.  
+3. **Create a CodeBuild project** that uses this repo and `buildspec.yml`.  
+4. **Create a CodePipeline pipeline** with:
+   - Source: GitHub (this repo)  
+   - Build: CodeBuild project  
+   - Deploy: S3 bucket  
+
+5. Commit a change to `main` and watch the pipeline run and deploy automatically.
+
+*(You can adapt these steps to match your preferred AWS setup.)*
+
+---
+
+## 🔭 Future Improvements
+
+- Add HTML/CSS linting or automated UI tests  
+- Use AWS CloudFormation or CDK to define the pipeline as code  
+- Add GitHub Actions workflow for additional checks  
+- Support multiple environments (dev/stage/prod)  
+
+---
+
+## ✅ Summary
 
 This project demonstrates a complete, automated CI/CD workflow for static website deployment using AWS-native services.  
 It’s a practical example of DevOps automation, infrastructure best practices, and clean project design.
