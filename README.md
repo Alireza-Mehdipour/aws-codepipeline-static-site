@@ -93,6 +93,8 @@ The static website is deployed to Amazon S3 and available at:
 
 http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
+![Static website screenshot](./screenshot-Static-Web.png)
+
 ---
 
 ## 🧰 Technologies Used
