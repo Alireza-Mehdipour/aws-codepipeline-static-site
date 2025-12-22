@@ -1,72 +1,103 @@
-# AWS CodePipeline Static Website Deployment
+#  AWS CodePipeline Static Website Deployment
 
-This project demonstrates a fully automated CI/CD pipeline for deploying a static website to Amazon S3 using AWS CodePipeline, AWS CodeBuild, and GitHub as the source repository. It includes automated testing, build version injection, and S3 static website hosting.
+This project demonstrates a fully automated CI/CD pipeline for deploying a static website to Amazon S3 using **AWS CodePipeline**, **AWS CodeBuild**, and **GitHub**.  
+It includes automated testing, build version injection, artifact packaging, and S3 static website hosting.
 
 ---
 
-## Architecture Overview
+## 🏗️ Architecture Overview
 
-The pipeline follows this flow:
-GitHub → CodePipeline → CodeBuild → S3 (Static Website Hosting)
-### Components
-- **GitHub** – Source code repository  
+**Pipeline Flow:**  
+**GitHub → CodePipeline → CodeBuild → S3 (Static Website Hosting)**
+
+###  Components
+
+- **GitHub** – Stores the source code  
 - **AWS CodePipeline** – Orchestrates the CI/CD workflow  
-- **AWS CodeBuild** – Runs tests, injects build version, prepares artifacts  
+- **AWS CodeBuild** – Runs tests, injects build version, and prepares artifacts  
 - **Amazon S3** – Hosts the static website  
 - **Bash + Python** – Used for testing and version injection  
 
 ---
 
-## Project Structure
-. ├── app/ │   ├── index.html │   └── style.css ├── scripts/ │   └── inject_version.py ├── tests/ │   └── app.test.sh ├── buildspec.yml └── README.md
+## 📁 Project Structure
+
+```
+.
+├── app/
+│   ├── index.html
+│   └── style.css
+├── scripts/
+│   └── inject_version.py
+├── tests/
+│   └── app.test.sh
+├── buildspec.yml
+└── README.md
+```
 
 ---
 
-## Features
+##  Features
 
-- Automated CI/CD pipeline using AWS CodePipeline  
+- Fully automated CI/CD pipeline using AWS CodePipeline  
 - Build version injection using Python  
-- Pre-build tests using Bash  
-- Automatic deployment to S3  
-- Static website hosting enabled  
-- Clean, modular project structure  
+- Pre‑build validation and testing using Bash  
+- Automatic deployment to an S3 static website bucket  
+- Clean, modular, and production‑ready project structure  
 
 ---
 
-## Testing
+##  Testing
 
-The `tests/app.test.sh` script validates:
+The script at `tests/app.test.sh` validates:
 
 - Required files exist  
 - Directory structure is correct  
 
-CodeBuild runs this script during the **pre_build** phase.
+These tests run during the **pre_build** phase in CodeBuild.
 
 ---
 
-## Build Process (buildspec.yml)
+## 🔧 Build Process (buildspec.yml)
 
-The build pipeline performs:
+The build pipeline includes:
 
-1. **Install phase**  
-   - Prints Python and Bash versions
+### **1. Install Phase**
+- Prints Python and Bash versions  
+- Prepares the environment  
 
-2. **Pre-build phase**  
-   - Runs tests  
-   - Validates file structure
+### **2. Pre‑build Phase**
+- Executes test scripts  
+- Validates project structure  
 
-3. **Build phase**  
-   - Generates a timestamped `BUILD_VERSION`
+### **3. Build Phase**
+- Generates a timestamped `BUILD_VERSION`  
+- Logs build metadata  
 
-4. **Post-build phase**  
-   - Copies files into `dist/`  
-   - Injects build version into HTML  
-   - Prepares artifacts for deployment  
+### **4. Post‑build Phase**
+- Copies files into the `dist/` directory  
+- Injects the build version into HTML  
+- Prepares final artifacts for deployment  
 
 ---
 
-## Deployment
+##  Deployment
 
-The final artifacts are deployed to an S3 bucket configured for **static website hosting**.
+The final build artifacts are deployed to an **S3 bucket configured for static website hosting**.
 
-### Example S3 Website Endpoint
+---
+
+## 🌐 Live Demo
+
+The static website is deployed to Amazon S3 and available at:
+
+**https://your-bucket-name.s3-website-<region>.amazonaws.com**
+
+(Replace with your actual S3 website endpoint.)
+
+---
+
+##  Summary
+
+This project demonstrates a complete, automated CI/CD workflow for static website deployment using AWS-native services.  
+It’s a practical example of DevOps automation, infrastructure best practices, and clean project design.
