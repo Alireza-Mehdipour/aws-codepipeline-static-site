@@ -5,12 +5,12 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 **Pipeline Flow:**  
 **GitHub → CodePipeline → CodeBuild → S3 (Static Website Hosting)**
 
-### ✅ Components
+### Components
 
 - **GitHub** – Stores the source code  
 - **AWS CodePipeline** – Orchestrates the CI/CD workflow  
@@ -20,7 +20,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
@@ -37,7 +37,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-## ✨ Features
+## Features
 
 - Fully automated CI/CD pipeline using AWS CodePipeline  
 - Build version injection using Python  
@@ -47,7 +47,7 @@ It includes automated testing, build version injection, artifact packaging, and 
 
 ---
 
-## 🧪 Testing
+## Testing
 
 The script at `tests/app.test.sh` validates:
 
@@ -81,13 +81,13 @@ The build pipeline includes:
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 The final build artifacts are deployed to an **S3 bucket configured for static website hosting**.
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 The static website is deployed to Amazon S3 and available at:
 
@@ -97,7 +97,7 @@ http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - **AWS CodePipeline** – CI/CD orchestration  
 - **AWS CodeBuild** – Build and test execution  
@@ -108,7 +108,7 @@ http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ---
 
-## 📦 How to Deploy Your Own Version
+## How to Deploy Your Own Version
 
 1. **Fork this repository** to your own GitHub account.  
 2. **Create an S3 bucket** and enable static website hosting.  
@@ -124,7 +124,7 @@ http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ---
 
-## 🔭 Future Improvements
+## Future Improvements
 
 - Add HTML/CSS linting or automated UI tests  
 - Use AWS CloudFormation or CDK to define the pipeline as code  
@@ -133,7 +133,7 @@ http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ---
 
-## ✅ Summary
+## Summary
 
 This project demonstrates a complete, automated CI/CD workflow for static website deployment using AWS-native services.  
 It’s a practical example of DevOps automation, infrastructure best practices, and clean project design.
