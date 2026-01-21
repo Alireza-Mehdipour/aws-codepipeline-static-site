@@ -58,7 +58,7 @@ These tests run during the **pre_build** phase in CodeBuild.
 
 ---
 
-## 🔧 Build Process (buildspec.yml)
+## Build Process (buildspec.yml)
 
 The build pipeline includes:
 
@@ -99,12 +99,12 @@ http://alireza-static-site-pipeline-01.s3-website-us-east-1.amazonaws.com/
 
 ## Technologies Used
 
-- **AWS CodePipeline** – CI/CD orchestration  
-- **AWS CodeBuild** – Build and test execution  
-- **Amazon S3** – Static website hosting  
-- **GitHub** – Source control and collaboration  
-- **Bash** – Test and validation scripts  
-- **Python** – Build version injection  
+- **AWS CodePipeline** –> CI/CD orchestration  
+- **AWS CodeBuild** –> Build and test execution  
+- **Amazon S3** –> Static website hosting  
+- **GitHub** –> Source control and collaboration  
+- **Bash** –> Test and validation scripts  
+- **Python** –> Build version injection  
 
 ---
 
