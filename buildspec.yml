@@ -1,9 +1,7 @@
 version: 0.2
-
 env:
   variables:
     BUILD_VERSION: "local-dev"
-
 phases:
   install:
     commands:
@@ -11,30 +9,28 @@ phases:
       - python3 --version
       - echo "[INSTALL] Shell version:"
       - bash --version
-
   pre_build:
     commands:
       - echo "[PRE_BUILD] Running tests..."
-      - pwd
-      - ls -R .
       - chmod +x tests/app.test.sh
       - ./tests/app.test.sh
-
   build:
     commands:
       - echo "[BUILD] Generating build version..."
       - export BUILD_VERSION=$(date -u "+%Y%m%d-%H%M%S-UTC")
+      - echo "${BUILD_VERSION}" > build_version.txt
       - echo "[BUILD] BUILD_VERSION=${BUILD_VERSION}"
-
   post_build:
     commands:
+      - export BUILD_VERSION=$(cat build_version.txt)
+      - echo "[POST_BUILD] BUILD_VERSION=${BUILD_VERSION}"
       - echo "[POST_BUILD] Preparing artifacts directory..."
       - mkdir -p dist
       - cp -r app/* dist/
       - echo "[POST_BUILD] Injecting build version into HTML..."
       - python3 scripts/inject_version.py
-      - echo "[POST_BUILD] Build completed."
-
+      - echo "[POST_BUILD] Verifying injection:"
+      - grep -i "build version" dist/index.html
 artifacts:
   files:
     - '**/*'
